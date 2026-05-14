@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jog the Dog — Dog Walking, Daycare & More · Melbourne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ──────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --cream:        #FAF7F2;
+      --cream-light:  #FFFDF9;
+      --cream-mid:    #F3EDE3;
+      --cream-dark:   #EAE0D3;
+      --green:        #3A6B24;
+      --green-light:  #4E8A33;
+      --green-pale:   #EBF3E7;
+      --brown:        #8B5E3C;
+      --brown-light:  #C49A6C;
+      --brown-pale:   #F5EDE4;
+      --text:         #1C1C1A;
+      --text-mid:     #4A4640;
+      --text-muted:   #7A7470;
+      --border:       #DDD4C5;
+      --shadow-sm:    0 2px 12px rgba(0,0,0,0.06);
+      --shadow-md:    0 8px 32px rgba(0,0,0,0.10);
+      --shadow-lg:    0 20px 60px rgba(0,0,0,0.13);
+      --radius:       16px;
+      --radius-sm:    10px;
+      --radius-lg:    24px;
+      --radius-pill:  100px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Utility ───────────────────────────────────── */
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown);
+      background: var(--brown-pale);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+    .btn-primary:hover {
+      background: var(--green-light);
+      border-color: var(--green-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(58,107,36,0.30);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--green);
+      border-color: #fff;
+    }
+    .btn-white:hover {
+      background: var(--cream-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ── Reveal animations ─────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+
+    /* ── Paw SVG decoration ────────────────────────── */
+    .paw-deco {
+      position: absolute;
+      opacity: 0.07;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* NAV                                             */
+    /* ═══════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(221,212,197,0.5);
+      transition: box-shadow 0.3s ease;
+    }
+    .nav.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--green);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; fill: #fff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-cta { margin-left: 8px; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--cream-light);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 5%;
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* HERO                                            */
+    /* ═══════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero.webp');
+      background-size: cover;
+      background-position: center 20%;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(250,247,242,0.97) 0%,
+        rgba(250,247,242,0.88) 38%,
+        rgba(250,247,242,0.30) 65%,
+        rgba(250,247,242,0.05) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 580px;
+      padding: 60px 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-pale);
+      border: 1px solid rgba(58,107,36,0.2);
+      border-radius: var(--radius-pill);
+      padding: 7px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .hero-stat-divider {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2.5s infinite;
+    }
+    .hero-scroll svg {
+      width: 20px; height: 20px;
+      stroke: var(--text-muted);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* TRUST STRIP                                     */
+    /* ═══════════════════════════════════════════════ */
+    .trust {
+      background: var(--green);
+      padding: 22px 0;
+      overflow: hidden;
+    }
+
+    .trust-track {
+      display: flex;
+      gap: 60px;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .trust-item svg {
+      width: 18px; height: 18px;
+      fill: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* WHY JOG                                         */
+    /* ═══════════════════════════════════════════════ */
+    .why {
+      padding: 100px 0;
+      background: var(--cream-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .why-images {
+      position: relative;
+      height: 520px;
+    }
+    .why-img-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 72%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .why-img-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 52%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 6px solid var(--cream-light);
+    }
+    .why-img-badge {
+      position: absolute;
+      top: 180px; left: -24px;
+      background: var(--green);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      z-index: 2;
+    }
+    .why-img-badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .why-img-badge-text {
+      font-size: 0.72rem;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    .why-features {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 36px;
+    }
+    .why-feature {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 22px;
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius);
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .why-feature:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+    .why-feature-icon {
+      width: 46px; height: 46px;
+      background: var(--green-pale);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .why-feature-icon svg { width: 22px; height: 22px; fill: var(--green); }
+    .why-feature-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .why-feature-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* SERVICES                                        */
+    /* ═══════════════════════════════════════════════ */
+    .services {
+      padding: 100px 0;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .services-header .section-subtitle {
+      margin: 14px auto 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--cream-light);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(58,107,36,0.25);
+    }
+    .service-card.featured {
+      border-color: var(--green);
+      box-shadow: 0 0 0 1px var(--green), var(--shadow-md);
+    }
+
+    .service-card-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      z-index: 2;
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover .service-card-img { transform: scale(1.04); }
+
+    .service-card-body {
+      padding: 26px;
+    }
+    .service-card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown);
+      background: var(--brown-pale);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 12px;
+    }
+    .service-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .service-card-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .service-card-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+    .service-card-include {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-mid);
+    }
+    .service-card-include svg {
+      width: 15px; height: 15px;
+      fill: var(--green);
+      flex-shrink: 0;
+    }
+    .service-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid var(--cream-dark);
+    }
+    .service-card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .service-card-price span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .service-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      background: var(--green);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .service-card:hover .service-card-btn {
+      background: var(--green-light);
+      transform: scale(1.04);
+    }
+    .service-card-btn svg { width: 14px; height: 14px; fill: #fff; }
+
+    /* ═══════════════════════════════════════════════ */
+    /* HOW IT WORKS                                    */
+    /* ═══════════════════════════════════════════════ */
+    .how {
+      padding: 100px 0;
+      background: var(--green);
+      position: relative;
+      overflow: hidden;
+    }
+    .how::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .how::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; right: -60px;
+      width: 500px; height: 500px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 50%;
+    }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .how-header .section-label {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+    }
+    .how-header .section-title { color: #fff; }
+    .how-header .section-subtitle { color: rgba(255,255,255,0.7); margin: 14px auto 0; }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .how-steps::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 2px;
+      background: rgba(255,255,255,0.2);
+      z-index: 0;
+    }
+
+    .how-step {
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .how-step-num {
+      width: 88px; height: 88px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 24px;
+      transition: background 0.3s;
+    }
+    .how-step:hover .how-step-num {
+      background: rgba(255,255,255,0.22);
+    }
+    .how-step-num svg { width: 32px; height: 32px; fill: #fff; }
+
+    .how-step-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 8px;
+    }
+    .how-step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .how-step-desc {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* GALLERY                                         */
+    /* ═══════════════════════════════════════════════ */
+    .gallery {
+      padding: 100px 0;
+      background: var(--cream-mid);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .gallery-header .section-subtitle { margin: 14px auto 0; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 14px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .gallery-item:nth-child(2) { grid-column: span 4; }
+    .gallery-item:nth-child(3) { grid-column: span 3; }
+    .gallery-item:nth-child(4) { grid-column: span 3; }
+    .gallery-item:nth-child(5) { grid-column: span 4; }
+
+    /* ═══════════════════════════════════════════════ */
+    /* TESTIMONIALS                                    */
+    /* ═══════════════════════════════════════════════ */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--cream-light);
+      overflow: hidden;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .testimonials-header .section-subtitle { margin: 14px auto 0; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .testimonial-card.featured {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .testimonial-card.featured .testimonial-text { color: rgba(255,255,255,0.88); }
+    .testimonial-card.featured .testimonial-name { color: #fff; }
+    .testimonial-card.featured .testimonial-role { color: rgba(255,255,255,0.6); }
+    .testimonial-card.featured .testimonial-stars svg { fill: rgba(255,255,255,0.8); }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+    .testimonial-stars svg { width: 16px; height: 16px; fill: var(--brown-light); }
+
+    .testimonial-text {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      display: grid;
+      place-items: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown);
+      flex-shrink: 0;
+    }
+    .testimonial-card.featured .testimonial-avatar {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* TEAM / ABOUT                                    */
+    /* ═══════════════════════════════════════════════ */
+    .team {
+      padding: 100px 0;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .team-content {}
+    .team-content .section-subtitle { margin-top: 14px; }
+
+    .team-quote {
+      margin: 30px 0;
+      padding: 22px 26px;
+      background: var(--green-pale);
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    .team-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .team-cred {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-mid);
+    }
+    .team-cred svg { width: 14px; height: 14px; fill: var(--green); }
+
+    .team-image {
+      position: relative;
+    }
+    .team-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .team-image-card {
+      position: absolute;
+      bottom: 24px;
+      left: -20px;
+      background: var(--cream-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .team-image-card-icon {
+      width: 44px; height: 44px;
+      background: var(--green);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+    .team-image-card-icon svg { width: 22px; height: 22px; fill: #fff; }
+    .team-image-card-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .team-image-card-text span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* FAQ                                             */
+    /* ═══════════════════════════════════════════════ */
+    .faq {
+      padding: 100px 0;
+      background: var(--cream-mid);
+    }
+
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .faq-left {}
+    .faq-left .section-subtitle { margin-top: 14px; }
+    .faq-left .btn { margin-top: 32px; }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--cream-light);
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .faq-item.open { border-color: var(--green); }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.93rem;
+      user-select: none;
+      gap: 16px;
+    }
+    .faq-question-icon {
+      width: 30px; height: 30px;
+      background: var(--cream-dark);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: background 0.25s, transform 0.3s;
+    }
+    .faq-item.open .faq-question-icon {
+      background: var(--green);
+      transform: rotate(45deg);
+    }
+    .faq-question-icon svg {
+      width: 14px; height: 14px;
+      stroke: var(--text-mid);
+      fill: none;
+    }
+    .faq-item.open .faq-question-icon svg { stroke: #fff; }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 20px;
+    }
+    .faq-answer p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* BOOKING CTA                                     */
+    /* ═══════════════════════════════════════════════ */
+    .cta {
+      padding: 100px 0;
+      background: var(--cream-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner {
+      background: var(--green);
+      border-radius: var(--radius-lg);
+      padding: 72px 64px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: 120px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .cta-inner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -40px;
+      width: 320px; height: 320px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+
+    .cta-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .cta-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-contact {
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+    }
+    .cta-contact a {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════ */
+    /* FOOTER                                          */
+    /* ═══════════════════════════════════════════════ */
+    .footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      padding: 64px 0 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand {}
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--green);
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+    }
+    .footer-logo-icon svg { width: 20px; height: 20px; fill: #fff; }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      max-width: 260px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .footer-social a:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .footer-social svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.6); }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: rgba(255,255,255,0.9); }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.875rem;
+    }
+    .footer-contact-item svg {
+      width: 15px; height: 15px;
+      fill: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.5); }
+    .footer-bottom a:hover { color: rgba(255,255,255,0.85); }
+
+    /* ═══════════════════════════════════════════════ */
+    /* RESPONSIVE                                      */
+    /* ═══════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .how-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .how-steps::before { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-burger { display: flex; }
+
+      .hero-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(250,247,242,0.95) 0%,
+          rgba(250,247,242,0.90) 60%,
+          rgba(250,247,242,0.75) 100%
+        );
+      }
+
+      .why-grid { grid-template-columns: 1fr; }
+      .why-images { height: 300px; }
+      .why-img-badge { display: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .how-steps { grid-template-columns: 1fr 1fr; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+      .gallery-item:nth-child(1) { grid-column: span 2; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .team-inner { grid-template-columns: 1fr; }
+      .team-image { order: -1; }
+      .team-image img { height: 320px; }
+      .team-image-card { display: none; }
+
+      .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      .cta-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 32px;
+        text-align: center;
+      }
+      .cta-actions { align-items: center; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .how-steps { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .hero-stat-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 9.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm5.5-4a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm5.5 4a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-7 10c-4 0-8-2.5-8-6.5 0-2 1.5-3.5 3-4l1 1.5c.5.7 1.3 1 2 1h4c.7 0 1.5-.3 2-1l1-1.5c1.5.5 3 2 3 4 0 4-4 6.5-8 6.5z"/>
+        </svg>
+      </div>
+      Jog the Dog
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="tel:0408571813" class="btn btn-primary nav-cta">
+      <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      0408 571 813
+    </a>
+
+    <div class="nav-burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="toggleMenu()">Services & Pricing</a>
+    <a href="#how" onclick="toggleMenu()">How It Works</a>
+    <a href="#about" onclick="toggleMenu()">About Us</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="tel:0408571813" onclick="toggleMenu()">📞 0408 571 813</a>
+  </div>
+
+  <!-- ═══ HERO ═══════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Now taking bookings · Melbourne's East
+        </div>
+
+        <h1 class="hero-title">
+          Your dog deserves<br/>
+          <em>the best</em> of every day.
+        </h1>
+
+        <p class="hero-sub">
+          Professional dog walking, daycare and puppy visits — with small groups,
+          GPS updates, and a whole lot of tail-wagging fun.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#services" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            View Services
+          </a>
+          <a href="tel:0408571813" class="btn btn-outline">
+            Book a Meet & Greet
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">8+</div>
+            <div class="hero-stat-label">Years in Melbourne</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">Happy Dogs</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5★</div>
+            <div class="hero-stat-label">Google Rated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Scroll
+    </div>
+  </section>
+
+  <!-- ═══ TRUST STRIP ════════════════════════════════ -->
+  <div class="trust" aria-hidden="true">
+    <div class="trust-track" id="trustTrack">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        Fully Insured
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Police Checked Staff
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        GPS Tracked Walks
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        Live Photo Updates
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        Dedicated Team
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+        5-Star Reviewed
+      </div>
+      <!-- duplicate for seamless loop -->
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        Fully Insured
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Police Checked Staff
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        GPS Tracked Walks
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        Live Photo Updates
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        Dedicated Team
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+        5-Star Reviewed
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ WHY JOG ════════════════════════════════════ -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-images reveal">
+          <img class="why-img-main" src="images/group-walk.webp" alt="Group of happy dogs on a walk" loading="lazy" />
+          <img class="why-img-accent" src="images/spaniel.webp" alt="Happy cocker spaniel on walk" loading="lazy" />
+          <div class="why-img-badge">
+            <div class="why-img-badge-num">6</div>
+            <div class="why-img-badge-text">Max Dogs<br/>Per Walk</div>
+          </div>
+        </div>
+
+        <div class="why-text">
+          <div class="reveal">
+            <div class="section-label">Why Choose Us</div>
+            <h2 class="section-title">Your dog's<br/>happiness is our<br/>whole world.</h2>
+            <p class="section-subtitle" style="margin-top:14px">
+              We're not just a dog walking company — we're a team of genuine dog lovers
+              who treat every pup like our own.
+            </p>
+          </div>
+
+          <div class="why-features">
+            <div class="why-feature reveal reveal-delay-1">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Real-time photo updates</div>
+                <div class="why-feature-desc">We send photos and GPS-verified walk reports to your phone so you can see exactly what your dog is up to.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal reveal-delay-2">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Small, carefully matched groups</div>
+                <div class="why-feature-desc">Maximum 6 dogs per walk, paired by size and temperament so every dog has a great time.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal reveal-delay-3">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Insured, police checked & trained</div>
+                <div class="why-feature-desc">All our walkers are police checked, first-aid trained and fully insured for your complete peace of mind.</div>
+              </div>
+            </div>
+            <div class="why-feature reveal reveal-delay-4">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.16 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.04 2.37 1.58 3.82 1.58 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/></svg>
+              </div>
+              <div>
+                <div class="why-feature-title">Door-to-door pick-up & drop-off</div>
+                <div class="why-feature-desc">We collect your dog from home and return them happy, exercised and ready for a nap.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══════════════════════════════════ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label">Services & Pricing</div>
+        <h2 class="section-title">Everything your pup needs</h2>
+        <p class="section-subtitle">From daily adventures to cosy daycare — tailored to every dog and every lifestyle.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Group Walk -->
+        <div class="service-card reveal reveal-delay-1">
+          <div style="overflow:hidden">
+            <img class="service-card-img" src="images/group-walk.webp" alt="Group dog walk" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-tag">Most Popular</div>
+            <h3 class="service-card-title">Group Dog Walk</h3>
+            <p class="service-card-desc">A 60-minute off-leash adventure with up to 6 carefully matched dogs. Socialisation, exercise and pure joy.</p>
+            <ul class="service-card-includes">
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                60-minute walk
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Pick-up & drop-off included
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                GPS tracking & photos
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Max 6 dogs per group
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <div class="service-card-price">
+                $28
+                <span>per walk</span>
+              </div>
+              <a href="tel:0408571813" class="service-card-btn">
+                Book Now
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Private Walk — Featured -->
+        <div class="service-card featured reveal reveal-delay-2">
+          <div class="service-card-badge">Best Value</div>
+          <div style="overflow:hidden">
+            <img class="service-card-img" src="images/spaniel.webp" alt="Private dog walk" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-tag">Premium</div>
+            <h3 class="service-card-title">Private Dog Walk</h3>
+            <p class="service-card-desc">A solo 60-minute walk, just for your dog. Ideal for anxious, reactive or senior dogs who prefer one-on-one time.</p>
+            <ul class="service-card-includes">
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                60-minute walk, solo
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Pick-up & drop-off included
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                GPS tracking & walk report
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Perfect for reactive dogs
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <div class="service-card-price">
+                $38
+                <span>per walk</span>
+              </div>
+              <a href="tel:0408571813" class="service-card-btn">
+                Book Now
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Day Daycare -->
+        <div class="service-card reveal reveal-delay-3">
+          <div style="overflow:hidden">
+            <img class="service-card-img" src="images/daycare.webp" alt="Dog daycare" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-tag">Daycare</div>
+            <h3 class="service-card-title">Full Day Daycare</h3>
+            <p class="service-card-desc">A full day of play, enrichment activities and social time in our secure yard. 7am to 6pm, pickup from home.</p>
+            <ul class="service-card-includes">
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                7am – 6pm full day
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Pickup & drop-home included
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Outdoor yard & enrichment
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Photo updates throughout
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <div class="service-card-price">
+                $48
+                <span>per day</span>
+              </div>
+              <a href="tel:0408571813" class="service-card-btn">
+                Book Now
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Half Day -->
+        <div class="service-card reveal reveal-delay-1">
+          <div style="overflow:hidden">
+            <img class="service-card-img" src="images/heeler.webp" alt="Half day daycare" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-tag">Daycare</div>
+            <h3 class="service-card-title">Half Day Daycare</h3>
+            <p class="service-card-desc">Four hours of fun and socialisation — perfect for dogs who need a mid-day adventure but are home by afternoon.</p>
+            <ul class="service-card-includes">
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                4 hours of daycare
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Pickup & drop-home included
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Morning or afternoon session
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <div class="service-card-price">
+                $30
+                <span>per session</span>
+              </div>
+              <a href="tel:0408571813" class="service-card-btn">
+                Book Now
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Puppy Visit -->
+        <div class="service-card reveal reveal-delay-2">
+          <div style="overflow:hidden">
+            <img class="service-card-img" src="images/van-dogs.webp" alt="Puppy home visit" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-tag">Home Visit</div>
+            <h3 class="service-card-title">Puppy & Senior Visit</h3>
+            <p class="service-card-desc">A 30-minute home visit for puppies, seniors or dogs who need a toilet break and some love while you're away.</p>
+            <ul class="service-card-includes">
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                30-minute home visit
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Feed, play & toilet break
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Visit report & photo sent
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <div class="service-card-price">
+                $25
+                <span>per visit</span>
+              </div>
+              <a href="tel:0408571813" class="service-card-btn">
+                Book Now
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holiday Care -->
+        <div class="service-card reveal reveal-delay-3">
+          <div style="overflow:hidden">
+            <img class="service-card-img" src="images/beach.webp" alt="Holiday pet care" loading="lazy" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-tag">Holiday</div>
+            <h3 class="service-card-title">Holiday Care</h3>
+            <p class="service-card-desc">Going away? We'll look after your dog with the same love and care as always — daily walks, playtime and updates.</p>
+            <ul class="service-card-includes">
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Daily walks included
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Regular photo & video updates
+              </li>
+              <li class="service-card-include">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Flexible duration
+              </li>
+            </ul>
+            <div class="service-card-footer">
+              <div class="service-card-price" style="font-size:1.1rem;padding-top:4px">
+                Contact Us
+                <span>for pricing</span>
+              </div>
+              <a href="tel:0408571813" class="service-card-btn">
+                Enquire
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══════════════════════════════ -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="how-header reveal">
+        <div class="section-label">Simple Process</div>
+        <h2 class="section-title">Getting started is easy</h2>
+        <p class="section-subtitle">From your first call to your dog's first walk — we make it smooth and stress-free.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step reveal reveal-delay-1">
+          <div class="how-step-num">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          </div>
+          <div class="how-step-label">Step 01</div>
+          <div class="how-step-title">Give us a call</div>
+          <div class="how-step-desc">Chat to us about your dog's needs, schedule and which service suits you best.</div>
+        </div>
+        <div class="how-step reveal reveal-delay-2">
+          <div class="how-step-num">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="how-step-label">Step 02</div>
+          <div class="how-step-title">Meet & Greet</div>
+          <div class="how-step-desc">We come to you for a free meet and greet so your dog gets to know their new walker.</div>
+        </div>
+        <div class="how-step reveal reveal-delay-3">
+          <div class="how-step-num">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          </div>
+          <div class="how-step-label">Step 03</div>
+          <div class="how-step-title">Book your service</div>
+          <div class="how-step-desc">Choose your days and services — one-off, regular or a package. Totally flexible.</div>
+        </div>
+        <div class="how-step reveal reveal-delay-4">
+          <div class="how-step-num">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+          </div>
+          <div class="how-step-label">Step 04</div>
+          <div class="how-step-title">Tails are wagging!</div>
+          <div class="how-step-desc">Sit back and receive photos and updates while your dog has the time of their life.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-header reveal">
+        <div class="section-label">Our Pack in Action</div>
+        <h2 class="section-title">Happy dogs, every day</h2>
+        <p class="section-subtitle">A little glimpse into the adventures your dog could be having.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <img src="images/happy-pups.webp" alt="Happy dogs in van" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/van-lineup.webp" alt="Dogs lined up in van" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/heeler.webp" alt="Blue heeler at daycare" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/daycare.webp" alt="Dog at daycare running" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/beach.webp" alt="Dogs on beach" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══════════════════════════════ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label">What Our Clients Say</div>
+        <h2 class="section-title">Tails don't lie</h2>
+        <p class="section-subtitle">Don't just take our word for it — here's what the Jog the Dog community has to say.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="testimonial-text">"Our golden retriever Max has been going with Jog the Dog for 2 years. He literally sprints to the van! The team are so attentive and the photo updates make my day every time."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div>
+              <div class="testimonial-name">Sarah M.</div>
+              <div class="testimonial-role">Golden Retriever mum · Ringwood</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card featured reveal reveal-delay-2">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="testimonial-text">"I was nervous about leaving my anxious rescue with anyone, but the team at Jog the Dog took so much care during the meet & greet. Bella now comes home exhausted and happy every single day."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div>
+              <div class="testimonial-name">James &amp; Kate T.</div>
+              <div class="testimonial-role">Rescue dog parents · Croydon</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <p class="testimonial-text">"We use the full day daycare three times a week and it's been life-changing. Our Labrador Coco used to chew everything from boredom — now she's a whole new dog. Cannot recommend enough."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">L</div>
+            <div>
+              <div class="testimonial-name">Lauren P.</div>
+              <div class="testimonial-role">Labrador mum · Mitcham</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEAM / ABOUT ════════════════════════════════ -->
+  <section class="team" id="about">
+    <div class="container">
+      <div class="team-inner">
+        <div class="team-content">
+          <div class="reveal">
+            <div class="section-label">About Jog the Dog</div>
+            <h2 class="section-title">A team that truly loves dogs</h2>
+            <p class="section-subtitle" style="margin-top:14px">
+              Founded in Melbourne's East, Jog the Dog was built on one simple belief:
+              dogs deserve professional care delivered with warmth and genuine passion.
+            </p>
+          </div>
+          <div class="team-quote reveal reveal-delay-1">
+            "Every dog that comes with us is treated with the same love and respect we'd give our own. We don't just walk dogs — we give them the adventure of their day."
+          </div>
+          <div class="team-creds reveal reveal-delay-2">
+            <div class="team-cred">
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              Fully Insured
+            </div>
+            <div class="team-cred">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              Police Checked
+            </div>
+            <div class="team-cred">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+              First Aid Trained
+            </div>
+            <div class="team-cred">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              GPS Tracked
+            </div>
+            <div class="team-cred">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+              5-Star Google Rating
+            </div>
+          </div>
+          <a href="tel:0408571813" class="btn btn-primary reveal reveal-delay-3" style="margin-top:32px">
+            Meet Our Team
+          </a>
+        </div>
+
+        <div class="team-image reveal">
+          <img src="images/team.webp" alt="The Jog the Dog team with van" loading="lazy" />
+          <div class="team-image-card">
+            <div class="team-image-card-icon">
+              <svg viewBox="0 0 24 24"><path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z"/></svg>
+            </div>
+            <div class="team-image-card-text">
+              <strong>Melbourne's East</strong>
+              <span>Serving since 2016</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══════════════════════════════════════ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-inner">
+        <div class="faq-left reveal">
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title">Questions? We've got you.</h2>
+          <p class="section-subtitle" style="margin-top:14px">
+            Can't find the answer you're looking for? Give us a call — we're always happy to chat.
+          </p>
+          <a href="tel:0408571813" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            Call Us Now
+          </a>
+        </div>
+
+        <div class="faq-list reveal reveal-delay-1">
+          <div class="faq-item open">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              How do I get started?
+              <div class="faq-question-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Simply give us a call on 0408 571 813 or send us a message. We'll organise a free meet and greet at your home so your dog can meet their new walker before the first session. Once everyone's happy, we'll set up your regular schedule.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              Are you insured and police checked?
+              <div class="faq-question-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Yes! All of our staff are police checked, first-aid trained, and we carry full public liability insurance. Your dog's safety and your peace of mind is our highest priority.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              How many dogs walk together in a group?
+              <div class="faq-question-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>We keep our groups to a maximum of 6 dogs. We carefully match dogs by size and temperament to ensure everyone has a safe and fun experience. Dogs who don't suit group walks are placed in our private walk service instead.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              What areas do you service?
+              <div class="faq-question-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>We service Melbourne's eastern suburbs including Ringwood, Croydon, Mitcham, Bayswater, Mooroolbark, Kilsyth, Chirnside Park and surrounds. Not sure if we cover your area? Give us a call and we'll let you know.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              Will I get updates during the walk?
+              <div class="faq-question-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Absolutely! We send photos and a GPS-tracked walk report to your phone after every session. You'll know exactly where your dog went, how long they walked, and see them having a great time.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              My dog is anxious — is that okay?
+              <div class="faq-question-icon">
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Of course! We work with all temperaments and take extra care with anxious or reactive dogs. We might recommend starting with a private walk so your dog can build confidence at their own pace. Our team is patient, experienced and genuinely caring.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BOOKING CTA ════════════════════════════════ -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div>
+          <div class="cta-label">Ready to Start?</div>
+          <h2 class="cta-title">Your dog's next great<br/>adventure awaits.</h2>
+          <p class="cta-sub">Book a free meet &amp; greet today. No commitment — just a friendly hello and a wagging tail.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="tel:0408571813" class="btn btn-white">
+            <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:var(--green)"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            Call 0408 571 813
+          </a>
+          <div class="cta-contact">
+            Or email <a href="mailto:hello@jogthedog.com.au">hello@jogthedog.com.au</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">
+              <svg viewBox="0 0 24 24"><path d="M4.5 9.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm5.5-4a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm5.5 4a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-7 10c-4 0-8-2.5-8-6.5 0-2 1.5-3.5 3-4l1 1.5c.5.7 1.3 1 2 1h4c.7 0 1.5-.3 2-1l1-1.5c1.5.5 3 2 3 4 0 4-4 6.5-8 6.5z"/></svg>
+            </div>
+            Jog the Dog
+          </div>
+          <p>Professional dog walking, daycare and pet care services in Melbourne's Eastern suburbs. We treat every dog like our own.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" style="fill:none;stroke:rgba(255,255,255,0.6);stroke-width:2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" style="stroke:rgba(255,255,255,0.6);stroke-width:2;stroke-linecap:round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Group Dog Walk</a></li>
+            <li><a href="#services">Private Dog Walk</a></li>
+            <li><a href="#services">Full Day Daycare</a></li>
+            <li><a href="#services">Half Day Daycare</a></li>
+            <li><a href="#services">Puppy Visits</a></li>
+            <li><a href="#services">Holiday Care</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#why">Why Jog the Dog</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#about">Meet the Team</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            <a href="tel:0408571813" style="color:rgba(255,255,255,0.55)">0408 571 813</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <a href="mailto:hello@jogthedog.com.au" style="color:rgba(255,255,255,0.55)">hello@jogthedog.com.au</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Melbourne's Eastern Suburbs
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2024 Jog the Dog. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hero image Ken Burns
+    window.addEventListener('load', () => {
+      document.getElementById('heroBg').classList.add('loaded');
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    function toggleFaq(questionEl) {
+      const item = questionEl.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Smooth nav link active states
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${current}` ? 'var(--green)' : '';
+      });
+    });
+  </script>
+</body>
+</html>
