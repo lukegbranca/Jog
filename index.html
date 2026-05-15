@@ -11,11 +11,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
     :root {
-      --cream: #FAF7F2; --cream-light: #FFFDF9; --cream-mid: #F2EAE0; --cream-dark: #E5D9CC;
-      --green: #3E3429; --green-mid: #7A6E64; --green-light: #B0A49A; --green-pale: #EDEAE4;
-      --brown: #3E3429; --brown-light: #B0A49A; --brown-pale: #EDEAE4;
-      --text: #1A1916; --text-mid: #46423C; --text-muted: #78746E; --border: #DDD3C2;
-      --shadow-sm: 0 2px 12px rgba(0,0,0,0.06); --shadow-md: 0 8px 32px rgba(0,0,0,0.11); --shadow-lg: 0 20px 60px rgba(0,0,0,0.14);
+      --cream: #FAF7F2; --cream-light: #FFFDF9; --cream-mid: #EDE0CE; --cream-dark: #DCCABA;
+      --green: #3E3429; --green-mid: #7A6E64; --green-light: #B0A49A; --green-pale: #EAE3D8;
+      --brown: #3E3429; --brown-light: #B0A49A; --brown-pale: #EAE3D8;
+      --text: #1A1916; --text-mid: #46423C; --text-muted: #78746E; --border: #D4C4AE;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.07); --shadow-md: 0 8px 32px rgba(0,0,0,0.12); --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
       --radius: 16px; --radius-sm: 10px; --radius-lg: 24px; --radius-pill: 100px;
     }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--cream); background-image: repeating-linear-gradient(45deg, rgba(140,110,60,0.022) 0, rgba(140,110,60,0.022) 1px, transparent 0, transparent 50%), repeating-linear-gradient(-45deg, rgba(140,110,60,0.022) 0, rgba(140,110,60,0.022) 1px, transparent 0, transparent 50%); background-size: 18px 18px; color: var(--text); line-height: 1.6; overflow-x: hidden; }
@@ -27,11 +27,11 @@
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 700; line-height: 1.15; color: var(--text); }
     .section-subtitle { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; max-width: 560px; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-pill); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; border: 2px solid transparent; white-space: nowrap; }
-    .btn-primary { background: linear-gradient(135deg, #7A5E20 0%, #B08828 100%); color: #fff; border-color: transparent; box-shadow: 0 4px 24px rgba(100,80,20,0.28); }
-    .btn-primary:hover { background: linear-gradient(135deg, #8A6C26 0%, #C49A30 100%); border-color: transparent; transform: translateY(-3px); box-shadow: 0 10px 36px rgba(100,80,20,0.40); }
+    .btn-primary { background: linear-gradient(135deg, #3A2E22 0%, #5C4A36 100%); color: #FAF7F2; border-color: transparent; box-shadow: 0 4px 24px rgba(30,22,12,0.30); }
+    .btn-primary:hover { background: linear-gradient(135deg, #4A3C2A 0%, #6E5A44 100%); border-color: transparent; transform: translateY(-3px); box-shadow: 0 10px 36px rgba(30,22,12,0.42); }
     .btn-outline { background: var(--cream-mid); color: var(--text-mid); border-color: var(--cream-dark); }
     .btn-outline:hover { background: var(--brown); color: #fff; border-color: var(--brown); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(62,52,41,0.28); }
-    .btn-white { background: #fff; color: #7A4820; border-color: rgba(255,255,255,0.9); box-shadow: 0 4px 18px rgba(0,0,0,0.14); }
+    .btn-white { background: #fff; color: #3A2E22; border-color: rgba(255,255,255,0.9); box-shadow: 0 4px 18px rgba(0,0,0,0.14); }
     .btn-white:hover { background: var(--cream-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.22); }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -39,7 +39,7 @@
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,247,242,0.90); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(221,211,194,0.55); transition: box-shadow 0.3s ease; }
     .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.07); }
     .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .nav-logo-icon { width: 42px; height: 42px; background: linear-gradient(145deg, #8A6A1A 0%, #C09030 100%); border-radius: 13px; display: grid; place-items: center; box-shadow: 0 3px 12px rgba(120,85,18,0.22); flex-shrink: 0; }
+    .nav-logo-icon { width: 42px; height: 42px; background: linear-gradient(145deg, #3A2E22 0%, #5C4A36 100%); border-radius: 13px; display: grid; place-items: center; box-shadow: 0 3px 12px rgba(30,22,12,0.28); flex-shrink: 0; }
     .nav-logo-icon svg { width: 28px; height: 28px; }
     .nav-logo-words { display: flex; flex-direction: column; gap: 1px; }
     .nav-logo-name { font-family: 'Playfair Display', serif; font-size: 1.22rem; font-weight: 700; color: var(--text); line-height: 1; display: block; letter-spacing: -0.01em; }
@@ -79,7 +79,7 @@
     .hero-visual-badge-icon svg { width: 20px; height: 20px; fill: var(--brown); }
     .hero-visual-badge strong { font-size: 0.85rem; color: var(--text); display: block; font-weight: 600; }
     .hero-visual-badge span { font-size: 0.70rem; color: var(--text-muted); display: block; margin-top: 1px; }
-    .trust { background: linear-gradient(135deg, #E8DDD0 0%, #DDD0C0 48%, #E3D8CB 100%); padding: 22px 0; overflow: hidden; position: relative; border-top: 1px solid rgba(180,145,100,0.18); border-bottom: 1px solid rgba(180,145,100,0.18); }
+    .trust { background: linear-gradient(135deg, #D8CABC 0%, #CCB8A8 48%, #D5C8BC 100%); padding: 22px 0; overflow: hidden; position: relative; border-top: 1px solid rgba(160,125,85,0.22); border-bottom: 1px solid rgba(160,125,85,0.22); }
     .trust::before { content: none; }
     .trust::after { content: none; }
     .trust-track { display: flex; gap: 56px; animation: marquee 15s linear infinite; width: max-content; position: relative; z-index: 1; }
@@ -87,7 +87,7 @@
     .trust-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; color: var(--text-mid); font-size: 0.84rem; font-weight: 500; }
     .trust-item svg { width: 17px; height: 17px; fill: var(--brown); flex-shrink: 0; }
     .trust-dot { width: 4px; height: 4px; background: rgba(62,52,41,0.22); border-radius: 50%; flex-shrink: 0; }
-    .why { padding: 110px 0; background: linear-gradient(160deg, var(--cream-light) 0%, var(--cream) 55%, var(--cream-mid) 100%); position: relative; overflow: hidden; }
+    .why { padding: 110px 0; background: linear-gradient(160deg, #FFFDF9 0%, #FAF7F2 40%, #EDE0CE 100%); position: relative; overflow: hidden; }
     .why::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--cream-dark), transparent); }
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
     .why-images { position: relative; height: 540px; }
@@ -104,7 +104,7 @@
     .why-feature-icon svg { width: 20px; height: 20px; fill: var(--green); }
     .why-feature-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 3px; }
     .why-feature-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
-    .services { padding: 110px 0; background: linear-gradient(200deg, var(--cream) 0%, var(--cream-light) 50%, var(--cream-mid) 100%); }
+    .services { padding: 110px 0; background: linear-gradient(200deg, #EDE0CE 0%, #FAF7F2 50%, #F5EDE4 100%); }
     .services-header { text-align: center; margin-bottom: 60px; }
     .services-header .section-subtitle { margin: 14px auto 0; }
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
@@ -128,7 +128,7 @@
     .service-card-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; background: var(--green); color: #fff; border-radius: var(--radius-pill); font-size: 0.8rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
     .service-card:hover .service-card-btn { background: var(--green-light); transform: scale(1.04); }
     .service-card-btn svg { width: 13px; height: 13px; fill: #fff; }
-    .how { padding: 110px 0; background: linear-gradient(165deg, #F8F3EC 0%, var(--cream) 45%, #F3ECE2 100%); position: relative; overflow: hidden; }
+    .how { padding: 110px 0; background: linear-gradient(165deg, #F2E8DC 0%, #FAF7F2 45%, #EDE0CE 100%); position: relative; overflow: hidden; }
     .how::before { content: none; }
     .how::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(255,252,246,0.7) 0%, transparent 60%); pointer-events: none; z-index: 0; }
     .how-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 1; }
@@ -144,7 +144,7 @@
     .how-step-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
     .how-step-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
     .how-step-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
-    .gallery { padding: 110px 0; background: linear-gradient(160deg, var(--cream) 0%, #F5EDE2 50%, var(--cream-mid) 100%); position: relative; overflow: hidden; }
+    .gallery { padding: 110px 0; background: linear-gradient(160deg, #FAF7F2 0%, #EDE0CE 50%, #DCCABA 100%); position: relative; overflow: hidden; }
     .gallery::before { content: none; }
     .gallery::after { content: none; }
     .gallery-header { text-align: center; margin-bottom: 50px; position: relative; z-index: 1; }
@@ -162,7 +162,7 @@
     .gallery-item:nth-child(5) { grid-column: 2; grid-row: 3; }
     .gallery-item:nth-child(1) img { object-position: center; } .gallery-item:nth-child(2) img { object-position: center; } .gallery-item:nth-child(3) img { object-position: center 85%; } .gallery-item:nth-child(4) img { object-position: center top; } .gallery-item:nth-child(5) img { object-position: center 78%; }
     .gallery-title { font-size: clamp(3rem, 6vw, 4.6rem) !important; letter-spacing: -0.02em; line-height: 1.05 !important; }
-    .gallery-title em { font-style: italic; font-weight: 400; background: linear-gradient(125deg, #8A6820 0%, #C4A040 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gallery-title em { font-style: italic; font-weight: 400; color: #4A3A28; background: none; -webkit-text-fill-color: #4A3A28; }
     .testimonials { padding: 110px 0; background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream) 60%, var(--cream-mid) 100%); }
     .testimonials-header { text-align: center; margin-bottom: 60px; }
     .testimonials-header .section-subtitle { margin: 14px auto 0; }
@@ -212,7 +212,7 @@
     .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 18px; }
     .faq-answer p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.75; }
     .cta { padding: 110px 0; background: var(--cream-light); }
-    .cta-inner { background: linear-gradient(135deg, #EDE4D8 0%, #E5D9CC 45%, #DDD1C3 100%); border-radius: var(--radius-lg); padding: 72px 64px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; position: relative; overflow: hidden; border: 1px solid rgba(180,145,100,0.2); }
+    .cta-inner { background: linear-gradient(135deg, #DDD0C0 0%, #CEBDA8 45%, #C4AF98 100%); border-radius: var(--radius-lg); padding: 72px 64px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; position: relative; overflow: hidden; border: 1px solid rgba(150,115,75,0.25); }
     .cta-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 40%, rgba(255,252,246,0.5) 0%, transparent 55%); pointer-events: none; z-index: 0; }
     .cta-inner::after { content: none; }
     .cta-label { display:inline-flex; align-items:center; background:var(--brown-pale); color:var(--brown); padding:6px 14px; border-radius:var(--radius-pill); font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:18px; border: 1px solid rgba(122,82,48,0.15); }
@@ -250,12 +250,12 @@
   <nav class="nav" id="nav">
     <a href="#home" class="nav-logo">
       <div class="nav-logo-icon">
-        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="5.5" cy="10" rx="2.5" ry="3" transform="rotate(-20 5.5 10)" fill="#fff"/>
-          <ellipse cx="10.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(-8 10.5 6.5)" fill="#fff"/>
-          <ellipse cx="17.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(8 17.5 6.5)" fill="#fff"/>
-          <ellipse cx="22.5" cy="10" rx="2.5" ry="3" transform="rotate(20 22.5 10)" fill="#fff"/>
-          <ellipse cx="14" cy="19" rx="8.5" ry="9" fill="#fff"/>
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="6" cy="11" rx="3" ry="4" transform="rotate(-25 6 11)" fill="#fff"/>
+          <ellipse cx="12" cy="6.5" rx="3.2" ry="4.2" transform="rotate(-8 12 6.5)" fill="#fff"/>
+          <ellipse cx="20" cy="6.5" rx="3.2" ry="4.2" transform="rotate(8 20 6.5)" fill="#fff"/>
+          <ellipse cx="26" cy="11" rx="3" ry="4" transform="rotate(25 26 11)" fill="#fff"/>
+          <path d="M16 13c-5.5 0-10 3.5-10 8 0 2.5 1.5 4 3.5 4 1.2 0 2.2-.5 3.2-1 1-.5 2-.8 3.3-.8s2.3.3 3.3.8c1 .5 2 1 3.2 1 2 0 3.5-1.5 3.5-4 0-4.5-4.5-8-10-8z" fill="#fff"/>
         </svg>
       </div>
       <div class="nav-logo-words">
@@ -303,10 +303,10 @@
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
-          <img class="hero-photo-main" src="images/spaniel.webp" alt="Happy spaniel" loading="eager"/>
-          <img class="hero-photo-accent" src="images/group-walk.webp" alt="Group dog walk" loading="eager"/>
+          <img class="hero-photo-main" src="images/group-walk.webp" alt="Group dog walk" loading="eager"/>
+          <img class="hero-photo-accent" src="images/heeler.webp" alt="Happy heeler" loading="eager"/>
           <div class="hero-visual-badge">
-            <div class="hero-visual-badge-icon"><svg viewBox="0 0 28 28" fill="none"><ellipse cx="5.5" cy="10" rx="2.5" ry="3" transform="rotate(-20 5.5 10)" fill="currentColor"/><ellipse cx="10.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(-8 10.5 6.5)" fill="currentColor"/><ellipse cx="17.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(8 17.5 6.5)" fill="currentColor"/><ellipse cx="22.5" cy="10" rx="2.5" ry="3" transform="rotate(20 22.5 10)" fill="currentColor"/><ellipse cx="14" cy="19" rx="8.5" ry="9" fill="currentColor"/></svg></div>
+            <div class="hero-visual-badge-icon"><svg viewBox="0 0 32 32" fill="none"><ellipse cx="6" cy="11" rx="3" ry="4" transform="rotate(-25 6 11)" fill="currentColor"/><ellipse cx="12" cy="6.5" rx="3.2" ry="4.2" transform="rotate(-8 12 6.5)" fill="currentColor"/><ellipse cx="20" cy="6.5" rx="3.2" ry="4.2" transform="rotate(8 20 6.5)" fill="currentColor"/><ellipse cx="26" cy="11" rx="3" ry="4" transform="rotate(25 26 11)" fill="currentColor"/><path d="M16 13c-5.5 0-10 3.5-10 8 0 2.5 1.5 4 3.5 4 1.2 0 2.2-.5 3.2-1 1-.5 2-.8 3.3-.8s2.3.3 3.3.8c1 .5 2 1 3.2 1 2 0 3.5-1.5 3.5-4 0-4.5-4.5-8-10-8z" fill="currentColor"/></svg></div>
             <div><strong>500+ Happy Dogs</strong><span>Trusted since 2016</span></div>
           </div>
         </div>
@@ -361,7 +361,7 @@
       </div>
       <div class="services-grid">
         <div class="service-card reveal reveal-delay-1"><div class="service-card-img-wrap"><img class="service-card-img" src="images/group-walk.webp" alt="Group walk" loading="lazy" style="object-position:center 40%"/></div><div class="service-card-body"><div class="service-card-tag">Most Popular</div><h3 class="service-card-title">Group Dog Walk</h3><p class="service-card-desc">A 60-minute off-leash adventure with up to 6 carefully matched dogs.</p><ul class="service-card-includes"><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>60-minute walk</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Pick-up &amp; drop-off included</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>GPS tracking &amp; photos</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Max 6 dogs per group</li></ul><div class="service-card-footer"><div class="service-card-price">$28<span>per walk</span></div><a href="tel:0408571813" class="service-card-btn">Book Now<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a></div></div></div>
-        <div class="service-card featured reveal reveal-delay-2"><div class="service-card-badge">Best Value</div><div class="service-card-img-wrap"><img class="service-card-img" src="images/spaniel.webp" alt="Private walk" loading="lazy" style="object-position:center 15%"/></div><div class="service-card-body"><div class="service-card-tag">Premium</div><h3 class="service-card-title">Private Dog Walk</h3><p class="service-card-desc">A solo 60-minute walk just for your dog. Ideal for anxious or reactive dogs.</p><ul class="service-card-includes"><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>60-minute solo walk</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Pick-up &amp; drop-off included</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>GPS tracking &amp; walk report</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Perfect for reactive dogs</li></ul><div class="service-card-footer"><div class="service-card-price">$38<span>per walk</span></div><a href="tel:0408571813" class="service-card-btn">Book Now<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a></div></div></div>
+        <div class="service-card featured reveal reveal-delay-2"><div class="service-card-badge">Best Value</div><div class="service-card-img-wrap"><img class="service-card-img" src="images/spaniel.webp" alt="Private walk" loading="lazy" style="object-position:center 25%"/></div><div class="service-card-body"><div class="service-card-tag">Premium</div><h3 class="service-card-title">Private Dog Walk</h3><p class="service-card-desc">A solo 60-minute walk just for your dog. Ideal for anxious or reactive dogs.</p><ul class="service-card-includes"><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>60-minute solo walk</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Pick-up &amp; drop-off included</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>GPS tracking &amp; walk report</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Perfect for reactive dogs</li></ul><div class="service-card-footer"><div class="service-card-price">$38<span>per walk</span></div><a href="tel:0408571813" class="service-card-btn">Book Now<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a></div></div></div>
         <div class="service-card reveal reveal-delay-3"><div class="service-card-img-wrap"><img class="service-card-img" src="images/daycare.webp" alt="Daycare" loading="lazy" style="object-position:center 20%"/></div><div class="service-card-body"><div class="service-card-tag">Daycare</div><h3 class="service-card-title">Full Day Daycare</h3><p class="service-card-desc">A full day of play, enrichment and social time in our secure yard. 7am to 6pm.</p><ul class="service-card-includes"><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>7am &ndash; 6pm full day</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Pickup &amp; drop-home included</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Outdoor yard &amp; enrichment</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Photo updates throughout</li></ul><div class="service-card-footer"><div class="service-card-price">$48<span>per day</span></div><a href="tel:0408571813" class="service-card-btn">Book Now<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a></div></div></div>
         <div class="service-card reveal reveal-delay-1"><div class="service-card-img-wrap"><img class="service-card-img" src="images/heeler.webp" alt="Half day" loading="lazy" style="object-position:center 38%"/></div><div class="service-card-body"><div class="service-card-tag">Daycare</div><h3 class="service-card-title">Half Day Daycare</h3><p class="service-card-desc">Four hours of fun &mdash; perfect for dogs who need a mid-day adventure.</p><ul class="service-card-includes"><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>4 hours of daycare</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Pickup &amp; drop-home included</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Morning or afternoon session</li></ul><div class="service-card-footer"><div class="service-card-price">$30<span>per session</span></div><a href="tel:0408571813" class="service-card-btn">Book Now<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a></div></div></div>
         <div class="service-card reveal reveal-delay-2"><div class="service-card-img-wrap"><img class="service-card-img" src="images/van-dogs.webp" alt="Puppy visit" loading="lazy" style="object-position:center"/></div><div class="service-card-body"><div class="service-card-tag">Home Visit</div><h3 class="service-card-title">Puppy &amp; Senior Visit</h3><p class="service-card-desc">A 30-minute home visit for puppies, seniors or dogs who need a toilet break.</p><ul class="service-card-includes"><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>30-minute home visit</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Feed, play &amp; toilet break</li><li class="service-card-include"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Visit report &amp; photo sent</li></ul><div class="service-card-footer"><div class="service-card-price">$25<span>per visit</span></div><a href="tel:0408571813" class="service-card-btn">Book Now<svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a></div></div></div>
@@ -456,7 +456,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="footer-logo"><div class="footer-logo-icon"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="5.5" cy="10" rx="2.5" ry="3" transform="rotate(-20 5.5 10)" fill="#fff"/><ellipse cx="10.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(-8 10.5 6.5)" fill="#fff"/><ellipse cx="17.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(8 17.5 6.5)" fill="#fff"/><ellipse cx="22.5" cy="10" rx="2.5" ry="3" transform="rotate(20 22.5 10)" fill="#fff"/><ellipse cx="14" cy="19" rx="8.5" ry="9" fill="#fff"/></svg></div>Jog the Dog</div>
+          <div class="footer-logo"><div class="footer-logo-icon"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="6" cy="11" rx="3" ry="4" transform="rotate(-25 6 11)" fill="#fff"/><ellipse cx="12" cy="6.5" rx="3.2" ry="4.2" transform="rotate(-8 12 6.5)" fill="#fff"/><ellipse cx="20" cy="6.5" rx="3.2" ry="4.2" transform="rotate(8 20 6.5)" fill="#fff"/><ellipse cx="26" cy="11" rx="3" ry="4" transform="rotate(25 26 11)" fill="#fff"/><path d="M16 13c-5.5 0-10 3.5-10 8 0 2.5 1.5 4 3.5 4 1.2 0 2.2-.5 3.2-1 1-.5 2-.8 3.3-.8s2.3.3 3.3.8c1 .5 2 1 3.2 1 2 0 3.5-1.5 3.5-4 0-4.5-4.5-8-10-8z" fill="#fff"/></svg></div>Jog the Dog</div>
           <p>Professional dog walking, daycare and pet care in Melbourne's Eastern suburbs. We treat every dog like our own.</p>
           <div class="footer-social"><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="rgba(255,255,255,0.55)" stroke="none"/></svg></a></div>
         </div>
