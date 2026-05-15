@@ -69,7 +69,7 @@
     .hero-badge-dot { width: 7px; height: 7px; background: #7A9A40; border-radius: 50%; animation: pulse 2.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3.2rem,5.8vw,5.4rem); font-weight: 700; line-height: 1.05; color: var(--text); margin-bottom: 24px; }
-    .hero-title em { font-style: italic; font-weight: 400; color: var(--text-muted); background: none; -webkit-text-fill-color: var(--text-muted); -webkit-background-clip: unset; background-clip: unset; }
+    .hero-title em { font-style: italic; font-weight: 400; color: #C4A07C; background: none; -webkit-text-fill-color: #C4A07C; -webkit-background-clip: unset; background-clip: unset; }
     .hero-sub { font-size: 1.08rem; color: var(--text-mid); line-height: 1.78; margin-bottom: 40px; max-width: 460px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
     .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
@@ -84,9 +84,10 @@
     .hero-visual-badge-icon svg { width: 20px; height: 20px; fill: var(--text-mid); }
     .hero-visual-badge strong { font-size: 0.85rem; color: var(--text); display: block; font-weight: 600; }
     .hero-visual-badge span { font-size: 0.70rem; color: var(--text-muted); display: block; margin-top: 1px; }
-    .trust { padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .trust-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 9px; color: var(--text-mid); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.01em; }
+    .trust { padding: 18px 0; overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .trust-track { display: flex; align-items: center; gap: 36px; width: max-content; animation: marquee 24s linear infinite; will-change: transform; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .trust-item { display: flex; align-items: center; gap: 9px; color: var(--text-mid); font-size: 0.82rem; font-weight: 500; white-space: nowrap; }
     .trust-item svg { width: 15px; height: 15px; fill: var(--text-muted); flex-shrink: 0; }
     .trust-dot { width: 3px; height: 3px; background: var(--border); border-radius: 50%; flex-shrink: 0; }
     .why { padding: 110px 0; background: radial-gradient(ellipse at 100% 0%, rgba(255,218,130,0.22) 0%, transparent 45%), radial-gradient(ellipse at 0% 100%, rgba(210,188,148,0.20) 0%, transparent 48%), linear-gradient(155deg, var(--cream-light) 0%, var(--cream) 45%, var(--cream-mid) 100%); position: relative; overflow: hidden; }
@@ -104,7 +105,7 @@
     .why-feature { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; background: rgba(255,255,255,0.55); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: none; transition: border-color 0.2s, transform 0.2s; }
     .why-feature:hover { border-color: rgba(62,52,41,0.22); box-shadow: var(--shadow-sm); transform: translateX(4px); }
     .why-feature-icon { width: 44px; height: 44px; background: var(--green-pale); border-radius: var(--radius-sm); display: grid; place-items: center; flex-shrink: 0; }
-    .why-feature-icon svg { width: 20px; height: 20px; fill: var(--green); }
+    .why-feature-icon svg { width: 20px; height: 20px; fill: var(--text); }
     .why-feature-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 3px; }
     .why-feature-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
     .services { padding: 110px 0; background: radial-gradient(ellipse at 25% 60%, rgba(255,230,160,0.18) 0%, transparent 48%), radial-gradient(ellipse at 80% 10%, rgba(220,198,155,0.14) 0%, transparent 44%), linear-gradient(210deg, var(--cream-mid) 0%, var(--cream) 38%, var(--cream-light) 70%, var(--cream) 100%); }
@@ -322,8 +323,8 @@
         <h1 class="hero-title">Melbourne's most<br/><em>loved</em> dog walkers.</h1>
         <p class="hero-sub">Professional dog walking, daycare and puppy visits. Small groups, GPS updates, and a whole lot of tail-wagging fun.</p>
         <div class="hero-actions">
-          <a href="#services" class="btn btn-primary">View Services</a>
-          <a href="tel:0408571813" class="btn btn-outline">Book a Meet &amp; Greet</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+          <a href="tel:0408571813" class="btn btn-primary">Book a Meet &amp; Greet</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat"><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years in Melbourne</div></div>
@@ -336,19 +337,18 @@
     </div>
     <div class="hero-scroll"><svg viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scroll</div>
   </section>
-  <div class="trust">
-    <div class="container">
-      <div class="trust-inner">
-        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Fully Insured</div>
-        <div class="trust-dot"></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>Police Checked</div>
-        <div class="trust-dot"></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>GPS Tracked Walks</div>
-        <div class="trust-dot"></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>Live Photo Updates</div>
-        <div class="trust-dot"></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>5-Star Reviewed</div>
-      </div>
+  <div class="trust" aria-hidden="true">
+    <div class="trust-track">
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Fully Insured</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>Police Checked</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>GPS Tracked Walks</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>Live Photo Updates</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>5-Star Reviewed</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Fully Insured</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>Police Checked</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>GPS Tracked Walks</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>Live Photo Updates</div><div class="trust-dot"></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>5-Star Reviewed</div><div class="trust-dot"></div>
     </div>
   </div>
   <section class="why" id="why">
