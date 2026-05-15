@@ -34,8 +34,8 @@
     .btn-outline:hover { background: rgba(26,25,22,0.04); border-color: rgba(26,25,22,0.38); transform: translateY(-1px); }
     .btn-white { background: #fff; color: var(--text); border-color: transparent; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
     .btn-white:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.12); transform: translateY(-1px); }
-    .btn-warm { background: #C4A07C; color: #1A1916; border-color: transparent; box-shadow: none; letter-spacing: 0.03em; }
-    .btn-warm:hover { background: #B5906C; box-shadow: 0 6px 24px rgba(0,0,0,0.14); transform: translateY(-1px); }
+    .btn-warm { background: #C4A07C; color: #1A1916; border: 1.5px solid #1A1916; box-shadow: none; letter-spacing: 0.03em; }
+    .btn-warm:hover { background: #B8916C; transform: translateY(-1px); }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.10s; } .reveal-delay-2 { transition-delay: 0.20s; } .reveal-delay-3 { transition-delay: 0.30s; } .reveal-delay-4 { transition-delay: 0.40s; }
@@ -71,7 +71,7 @@
     .hero-badge-dot { width: 7px; height: 7px; background: #7A9A40; border-radius: 50%; animation: pulse 2.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
     .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3.2rem,5.8vw,5.4rem); font-weight: 700; line-height: 1.05; color: var(--text); margin-bottom: 24px; }
-    .hero-title em { font-style: italic; font-weight: 400; color: #C4A07C; background: none; -webkit-text-fill-color: #C4A07C; -webkit-background-clip: unset; background-clip: unset; }
+    .hero-title em { font-style: italic; font-weight: 400; color: #C4A07C; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset; }
     .hero-sub { font-size: 1.08rem; color: var(--text-mid); line-height: 1.78; margin-bottom: 40px; max-width: 460px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
     .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
