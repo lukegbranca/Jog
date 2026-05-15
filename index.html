@@ -28,9 +28,9 @@
     .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); font-weight: 700; line-height: 1.15; color: var(--text); }
     .section-subtitle { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; max-width: 560px; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-pill); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; border: 2px solid transparent; white-space: nowrap; }
-    .btn-primary { background: var(--cream-light); color: var(--text); border-color: rgba(26,25,22,0.22); box-shadow: 0 2px 18px rgba(0,0,0,0.09); letter-spacing: 0.01em; }
-    .btn-primary:hover { background: var(--cream-mid); border-color: rgba(26,25,22,0.35); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.13); }
-    .btn-outline { background: transparent; color: var(--text-mid); border-color: var(--border); }
+    .btn-primary { background: var(--cream-mid); color: var(--text); border-color: rgba(26,25,22,0.18); box-shadow: 0 2px 18px rgba(0,0,0,0.10); letter-spacing: 0.01em; }
+    .btn-primary:hover { background: var(--cream-dark); border-color: rgba(26,25,22,0.28); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.14); }
+    .btn-outline { background: rgba(237,224,206,0.45); color: var(--text-mid); border-color: var(--border); }
     .btn-outline:hover { background: var(--cream-mid); border-color: var(--cream-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
     .btn-white { background: var(--cream-light); color: var(--text); border-color: rgba(26,25,22,0.18); box-shadow: 0 4px 18px rgba(0,0,0,0.10); }
     .btn-white:hover { background: var(--cream); border-color: rgba(26,25,22,0.28); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.14); }
@@ -59,7 +59,7 @@
     .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 220px; background: linear-gradient(to bottom, transparent 0%, var(--cream-light) 100%); z-index: 2; pointer-events: none; }
     /* full-bleed photo on right */
     .hero-photo-wrap { position: absolute; top: 0; right: 0; bottom: 0; width: 60%; z-index: 1; }
-    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; }
     .hero-photo-wrap::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 65%; background: linear-gradient(to right, var(--cream-light) 0%, rgba(255,253,249,0.6) 55%, transparent 100%); z-index: 2; }
     .hero-photo-wrap::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 100%; background: linear-gradient(to bottom, rgba(255,253,249,0.15) 0%, transparent 20%, transparent 75%, var(--cream-light) 100%); z-index: 2; }
     /* accent photo card floating over photo */
@@ -171,23 +171,19 @@
     .testimonials { padding: 110px 0; background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream) 60%, var(--cream-mid) 100%); }
     .testimonials-header { text-align: center; margin-bottom: 60px; }
     .testimonials-header .section-subtitle { margin: 14px auto 0; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-    .testimonials-row2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 22px; }
-    .testimonial-card { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: var(--radius-lg); padding: 30px; transition: box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; }
-    .testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-    .testimonial-card.featured { background: var(--brown-pale); border-color: var(--brown-light); border-width: 2px; box-shadow: 0 4px 24px rgba(122,82,48,0.15); }
-    .testimonial-card.featured .testimonial-text { color: var(--text-mid); }
-    .testimonial-card.featured .testimonial-name { color: var(--text); }
-    .testimonial-card.featured .testimonial-role { color: var(--text-muted); }
-    .testimonial-card.featured .testimonial-stars svg { fill: var(--brown-light); }
-    .testimonial-card.featured .testimonial-avatar { background: var(--cream-dark); color: var(--brown); }
-    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 16px; }
-    .testimonial-stars svg { width: 15px; height: 15px; fill: var(--brown-light); }
-    .testimonial-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 22px; font-style: italic; flex: 1; }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
-    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--cream-dark); display: grid; place-items: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--brown); flex-shrink: 0; }
-    .testimonial-name { font-weight: 600; font-size: 0.88rem; }
-    .testimonial-role { font-size: 0.76rem; color: var(--text-muted); margin-top: 2px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .testimonials-row2 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 20px; }
+    .testimonial-card { background: #fff; border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius-lg); padding: 26px 26px 22px; box-shadow: 0 2px 20px rgba(0,0,0,0.06); transition: box-shadow 0.3s, transform 0.3s; display: flex; flex-direction: column; position: relative; }
+    .testimonial-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.11); transform: translateY(-4px); }
+    .testimonial-card.featured { background: #fff; border-color: rgba(0,0,0,0.07); }
+    .testimonial-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .testimonial-stars { display: flex; gap: 3px; }
+    .testimonial-stars svg { width: 16px; height: 16px; fill: #FBBC04; }
+    .google-wordmark { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1; }
+    .testimonial-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.78; margin-bottom: 20px; font-style: italic; flex: 1; }
+    .testimonial-author { margin-top: auto; }
+    .testimonial-name { font-weight: 700; font-size: 0.88rem; color: var(--text); }
+    .testimonial-role { font-size: 0.76rem; color: var(--text-muted); margin-top: 3px; }
     .team { padding: 110px 0; background: linear-gradient(160deg, var(--cream) 0%, var(--cream-light) 55%, var(--cream) 100%); }
     .team-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .team-content .section-subtitle { margin-top: 14px; }
@@ -399,14 +395,56 @@
     <div class="container">
       <div class="testimonials-header reveal"><div class="section-label">Google Reviews</div><h2 class="section-title">Tails don't lie</h2><p class="section-subtitle">Real words from real dog parents in Melbourne's East.</p></div>
       <div class="testimonials-grid">
-        <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testimonial-text">&ldquo;Highly recommend Jog the Dog. Billy my golden retriever loves his walks, always comes home happy and tired &mdash; he can't wait to get out the door when they come to pick him up.&rdquo;</p><div class="testimonial-author"><div class="testimonial-avatar">J</div><div><div class="testimonial-name">Joanne McCauley</div><div class="testimonial-role">Golden Retriever mum</div></div></div></div>
-        <div class="testimonial-card featured reveal reveal-delay-2"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testimonial-text">&ldquo;Over many years my many dogs have enjoyed outings with Jog the Dog. Lisa, Jam, Sophia and the whole team are wonderful &mdash; they are exhausted and so happy. I wish they could tell me all about their adventures!&rdquo;</p><div class="testimonial-author"><div class="testimonial-avatar">M</div><div><div class="testimonial-name">Meg</div><div class="testimonial-role">Long-time client</div></div></div></div>
-        <div class="testimonial-card reveal reveal-delay-3"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testimonial-text">&ldquo;My greyhound Max loves his weekly walks with Jog the Dog. He enjoys the safe interaction with other dogs and always comes back tired but happy. I really enjoy the flexibility when I need to change a booking.&rdquo;</p><div class="testimonial-author"><div class="testimonial-avatar">K</div><div><div class="testimonial-name">Karen Troester</div><div class="testimonial-role">Greyhound mum</div></div></div></div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-card-top">
+            <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span class="google-wordmark"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+          </div>
+          <p class="testimonial-text">&ldquo;Highly recommend Jog the Dog. Billy my golden retriever loves his walks, always comes home happy and tired &mdash; he can't wait to get out the door when they come to pick him up.&rdquo;</p>
+          <div class="testimonial-author"><div class="testimonial-name">Joanne McCauley</div><div class="testimonial-role">2 months ago</div></div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-card-top">
+            <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span class="google-wordmark"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+          </div>
+          <p class="testimonial-text">&ldquo;Over many years my many dogs have enjoyed outings with Jog the Dog. Lisa, Jam, Sophia and the whole team are wonderful &mdash; they are exhausted and so happy. I wish they could tell me all about their adventures!&rdquo;</p>
+          <div class="testimonial-author"><div class="testimonial-name">Meg</div><div class="testimonial-role">6 months ago</div></div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-card-top">
+            <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span class="google-wordmark"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+          </div>
+          <p class="testimonial-text">&ldquo;My greyhound Max loves his weekly walks with Jog the Dog. He enjoys the safe interaction with other dogs and always comes back tired but happy. I really enjoy the flexibility when I need to change a booking.&rdquo;</p>
+          <div class="testimonial-author"><div class="testimonial-name">Karen Troester</div><div class="testimonial-role">4 months ago</div></div>
+        </div>
       </div>
       <div class="testimonials-row2">
-        <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testimonial-text">&ldquo;Our rescue pup loves her weekly sessions with the friendly peeps at Jog The Dog. It's wonderful to see her become more sociable and playful!&rdquo;</p><div class="testimonial-author"><div class="testimonial-avatar">J</div><div><div class="testimonial-name">Jo Mansutti</div><div class="testimonial-role">Rescue dog parent</div></div></div></div>
-        <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testimonial-text">&ldquo;Jog the Dog is amazing! Barra is always thrilled to see them, and every walk leaves him happy and tuckered out. Super reliable and fun &mdash; highly recommend!&rdquo;</p><div class="testimonial-author"><div class="testimonial-avatar">C</div><div><div class="testimonial-name">Carolyn Hunter</div><div class="testimonial-role">Dog mum</div></div></div></div>
-        <div class="testimonial-card reveal reveal-delay-3"><div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div><p class="testimonial-text">&ldquo;Insightful, professional and confidence building. Lisa and her team are true masters and leave you feeling confident in managing and mentoring your dog.&rdquo;</p><div class="testimonial-author"><div class="testimonial-avatar">P</div><div><div class="testimonial-name">Phil Pike</div><div class="testimonial-role">Dog owner</div></div></div></div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-card-top">
+            <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span class="google-wordmark"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+          </div>
+          <p class="testimonial-text">&ldquo;Our rescue pup loves her weekly sessions with the friendly peeps at Jog The Dog. It's wonderful to see her become more sociable and playful!&rdquo;</p>
+          <div class="testimonial-author"><div class="testimonial-name">Jo Mansutti</div><div class="testimonial-role">1 month ago</div></div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-card-top">
+            <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span class="google-wordmark"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+          </div>
+          <p class="testimonial-text">&ldquo;Jog the Dog is amazing! Barra is always thrilled to see them, and every walk leaves him happy and tuckered out. Super reliable and fun &mdash; highly recommend!&rdquo;</p>
+          <div class="testimonial-author"><div class="testimonial-name">Carolyn Hunter</div><div class="testimonial-role">3 months ago</div></div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-card-top">
+            <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span class="google-wordmark"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+          </div>
+          <p class="testimonial-text">&ldquo;Insightful, professional and confidence building. Lisa and her team are true masters and leave you feeling confident in managing and mentoring your dog.&rdquo;</p>
+          <div class="testimonial-author"><div class="testimonial-name">Phil Pike</div><div class="testimonial-role">5 months ago</div></div>
+        </div>
       </div>
     </div>
   </section>
