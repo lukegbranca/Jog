@@ -39,7 +39,7 @@
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 5%; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,247,242,0.90); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(221,211,194,0.55); transition: box-shadow 0.3s ease; }
     .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.07); }
     .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .nav-logo-icon { width: 42px; height: 42px; background: var(--green); border-radius: 13px; display: grid; place-items: center; box-shadow: 0 2px 10px rgba(30,22,14,0.28); flex-shrink: 0; }
+    .nav-logo-icon { width: 42px; height: 42px; background: linear-gradient(145deg, #8A6A1A 0%, #C09030 100%); border-radius: 13px; display: grid; place-items: center; box-shadow: 0 3px 12px rgba(120,85,18,0.22); flex-shrink: 0; }
     .nav-logo-icon svg { width: 28px; height: 28px; }
     .nav-logo-words { display: flex; flex-direction: column; gap: 1px; }
     .nav-logo-name { font-family: 'Playfair Display', serif; font-size: 1.22rem; font-weight: 700; color: var(--text); line-height: 1; display: block; letter-spacing: -0.01em; }
@@ -53,31 +53,32 @@
     .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--cream-light); border-bottom: 1px solid var(--border); padding: 24px 5%; z-index: 99; flex-direction: column; gap: 16px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--text-mid); padding: 10px 0; border-bottom: 1px solid var(--cream-dark); }
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 72px; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('images/hero.webp'); background-size: cover; background-position: center 30%; transform: scale(1.04); transition: transform 8s ease; }
-    .hero-bg.loaded { transform: scale(1); }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.10) 45%, transparent 72%); }
-    .hero-content { position: relative; z-index: 2; max-width: 570px; padding: 52px 56px; background: rgba(250,247,242,0.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-radius: 28px; border: 1px solid rgba(255,255,255,0.38); box-shadow: 0 16px 70px rgba(0,0,0,0.18), 0 1px 0 rgba(255,255,255,0.3) inset; margin: 40px 0 60px; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.16); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.32); border-radius: var(--radius-pill); padding: 8px 18px; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.92); letter-spacing: 0.05em; margin-bottom: 26px; }
-    .hero-badge-dot { width: 7px; height: 7px; background: #F0B840; border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 6px rgba(240,184,64,0.7); }
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 72px; overflow: hidden; background: linear-gradient(145deg, #FFFDF9 0%, #FAF7F2 55%, #F5EEE6 100%); }
+    .hero::before { content: ''; position: absolute; bottom: -140px; left: -140px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(155,125,55,0.05) 0%, transparent 65%); pointer-events: none; z-index: 0; }
+    .hero::after { content: ''; position: absolute; top: 120px; right: -70px; width: 380px; height: 380px; border-radius: 50%; border: 1.5px solid rgba(155,125,55,0.07); pointer-events: none; z-index: 0; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 80px 0 90px; width: 100%; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--cream-mid); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 8px 16px; font-size: 0.78rem; font-weight: 500; color: var(--text-mid); letter-spacing: 0.02em; margin-bottom: 26px; }
+    .hero-badge-dot { width: 7px; height: 7px; background: #6A8830; border-radius: 50%; animation: pulse 2.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3.2rem,6.2vw,5.4rem); font-weight: 700; line-height: 1.06; color: #fff; margin-bottom: 20px; text-shadow: 0 2px 20px rgba(0,0,0,0.18); }
-    .hero-title em { font-style: italic; font-weight: 400; background: linear-gradient(135deg, #F0C860 0%, #E09A30 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.84); line-height: 1.75; margin-bottom: 36px; max-width: 460px; text-shadow: 0 1px 8px rgba(0,0,0,0.2); }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5.2vw,4.6rem); font-weight: 700; line-height: 1.08; color: var(--text); margin-bottom: 22px; }
+    .hero-title em { font-style: italic; font-weight: 400; color: #5C4C1E; background: none; -webkit-text-fill-color: #5C4C1E; -webkit-background-clip: unset; background-clip: unset; }
+    .hero-sub { font-size: 1.05rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 36px; max-width: 460px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
     .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
-    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; }
-    .hero-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.65); margin-top: 3px; letter-spacing: 0.02em; }
-    .hero-stat-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
-    .hero::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, transparent, rgba(240,232,218,0.15)); pointer-events: none; z-index: 3; }
-    .hero::after { content: ''; position: absolute; top: -80px; right: -80px; width: 65vw; height: 65vw; max-width: 720px; max-height: 720px; border-radius: 50%; background: radial-gradient(circle, rgba(210,160,50,0.055) 0%, transparent 65%); pointer-events: none; z-index: 1; }
+    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--text); line-height: 1; }
+    .hero-stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+    .hero-stat-divider { width: 1px; background: var(--border); align-self: stretch; }
     .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; animation: bounce 2.5s infinite; z-index: 4; }
     .hero-scroll svg { width: 20px; height: 20px; stroke: var(--text-muted); }
     @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
-    .hero-floats { position: absolute; right: 7%; top: 50%; transform: translateY(-50%); z-index: 2; display: none; pointer-events: none; }
-    .hero-float-a { width: 255px; height: 320px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 32px 70px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.4); transform: rotate(2.5deg); }
-    .hero-float-b { width: 200px; height: 218px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.28); transform: rotate(-3.5deg) translateX(-56px); border: 6px solid #fff; margin-top: -60px; }
-    @media (min-width: 1080px) { .hero-floats { display: block; } }
+    .hero-visual { position: relative; height: 580px; }
+    .hero-photo-main { position: absolute; top: 0; right: 0; width: 85%; height: 490px; object-fit: cover; object-position: center 18%; border-radius: 28px; box-shadow: 0 28px 80px rgba(0,0,0,0.15); display: block; }
+    .hero-photo-accent { position: absolute; bottom: 0; left: 0; width: 54%; height: 250px; object-fit: cover; object-position: center 40%; border-radius: 22px; border: 5px solid var(--cream-light); box-shadow: 0 16px 50px rgba(0,0,0,0.13); z-index: 2; display: block; }
+    .hero-visual-badge { position: absolute; bottom: 90px; right: -6px; background: var(--cream-light); border: 1px solid var(--border); border-radius: 16px; padding: 14px 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.09); display: flex; align-items: center; gap: 12px; z-index: 3; min-width: 155px; }
+    .hero-visual-badge-icon { width: 38px; height: 38px; background: var(--brown-pale); border-radius: 10px; display: grid; place-items: center; flex-shrink: 0; }
+    .hero-visual-badge-icon svg { width: 20px; height: 20px; fill: var(--brown); }
+    .hero-visual-badge strong { font-size: 0.85rem; color: var(--text); display: block; font-weight: 600; }
+    .hero-visual-badge span { font-size: 0.70rem; color: var(--text-muted); display: block; margin-top: 1px; }
     .trust { background: linear-gradient(135deg, #E8DDD0 0%, #DDD0C0 48%, #E3D8CB 100%); padding: 22px 0; overflow: hidden; position: relative; border-top: 1px solid rgba(180,145,100,0.18); border-bottom: 1px solid rgba(180,145,100,0.18); }
     .trust::before { content: none; }
     .trust::after { content: none; }
@@ -241,7 +242,7 @@
     .footer-bottom { display:flex; justify-content:space-between; align-items:center; font-size:0.78rem; }
     .footer-bottom a { color:rgba(255,255,255,0.4); } .footer-bottom a:hover { color:rgba(255,255,255,0.8); }
     @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2,1fr); } .how-steps { grid-template-columns: repeat(2,1fr); gap:40px; } .how-steps::before { display:none; } .footer-top { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) { .nav-links,.nav-cta { display:none; } .nav-burger { display:flex; } .hero-overlay { background: linear-gradient(180deg, rgba(20,12,5,0.12) 0%, rgba(20,12,5,0.06) 50%, transparent 100%); } .hero-content { max-width:100%; padding:36px 28px; margin:16px 0 40px; } .why-grid { grid-template-columns:1fr; gap:32px; } .why-images { height:340px; overflow:hidden; } .why-img-main { height:340px; } .why-img-accent { height:200px; } .why-img-badge { display:none; } .why-text { padding-top:0; } .services-grid { grid-template-columns:1fr; } .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; } .gallery-item:nth-child(1),.gallery-item:nth-child(2),.gallery-item:nth-child(3),.gallery-item:nth-child(4),.gallery-item:nth-child(5) { grid-column:auto; grid-row:auto; height:180px; } .gallery-item:nth-child(1) { grid-column:1 / 3; height:220px; } .testimonials-grid,.testimonials-row2 { grid-template-columns:1fr; } .team-inner { grid-template-columns:1fr; } .team-image { order:-1; } .team-image img { height:300px; } .team-image-card { display:none; } .faq-inner { grid-template-columns:1fr; gap:40px; } .cta-inner { grid-template-columns:1fr; padding:48px 28px; text-align:center; } .cta-actions { align-items:center; } .footer-top { grid-template-columns:1fr; gap:28px; } .footer-bottom { flex-direction:column; gap:12px; text-align:center; } .how-steps { grid-template-columns:1fr 1fr; } }
+    @media (max-width: 768px) { .nav-links,.nav-cta { display:none; } .nav-burger { display:flex; } .hero-inner { grid-template-columns:1fr; gap:28px; padding:28px 0 60px; } .hero-visual { order:-1; height:auto; } .hero-photo-main { position:static; width:100%; height:260px; border-radius:20px; } .hero-photo-accent { display:none; } .hero-visual-badge { display:none; } .why-grid { grid-template-columns:1fr; gap:32px; } .why-images { height:340px; overflow:hidden; } .why-img-main { height:340px; } .why-img-accent { height:200px; } .why-img-badge { display:none; } .why-text { padding-top:0; } .services-grid { grid-template-columns:1fr; } .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; } .gallery-item:nth-child(1),.gallery-item:nth-child(2),.gallery-item:nth-child(3),.gallery-item:nth-child(4),.gallery-item:nth-child(5) { grid-column:auto; grid-row:auto; height:180px; } .gallery-item:nth-child(1) { grid-column:1 / 3; height:220px; } .testimonials-grid,.testimonials-row2 { grid-template-columns:1fr; } .team-inner { grid-template-columns:1fr; } .team-image { order:-1; } .team-image img { height:300px; } .team-image-card { display:none; } .faq-inner { grid-template-columns:1fr; gap:40px; } .cta-inner { grid-template-columns:1fr; padding:48px 28px; text-align:center; } .cta-actions { align-items:center; } .footer-top { grid-template-columns:1fr; gap:28px; } .footer-bottom { flex-direction:column; gap:12px; text-align:center; } .how-steps { grid-template-columns:1fr 1fr; } }
     @media (max-width: 480px) { .how-steps { grid-template-columns:1fr; } .hero-stats { gap:20px; } .hero-stat-divider { display:none; } }
   </style>
 </head>
@@ -283,31 +284,35 @@
     <a href="tel:0408571813" onclick="toggleMenu()">Call 0408 571 813</a>
   </div>
   <section class="hero" id="home">
-    <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-overlay"></div>
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge"><div class="hero-badge-dot"></div>Now taking bookings &middot; Melbourne's East</div>
-        <h1 class="hero-title">Your dog deserves<br/><em>the best</em> of every day.</h1>
-        <p class="hero-sub">Professional dog walking, daycare and puppy visits &mdash; with small groups, GPS updates, and a whole lot of tail-wagging fun.</p>
-        <div class="hero-actions">
-          <a href="#services" class="btn btn-primary">View Services</a>
-          <a href="tel:0408571813" class="btn btn-outline">Book a Meet &amp; Greet</a>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge"><div class="hero-badge-dot"></div>Now taking bookings &middot; Melbourne's East</div>
+          <h1 class="hero-title">Melbourne's most<br/><em>loved</em> dog walkers.</h1>
+          <p class="hero-sub">Professional dog walking, daycare and puppy visits &mdash; small groups, GPS updates, and a whole lot of tail-wagging fun.</p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">View Services</a>
+            <a href="tel:0408571813" class="btn btn-outline">Book a Meet &amp; Greet</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years in Melbourne</div></div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Happy Dogs</div></div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat"><div class="hero-stat-num">5&#9733;</div><div class="hero-stat-label">Google Rated</div></div>
+          </div>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat"><div class="hero-stat-num">8+</div><div class="hero-stat-label">Years in Melbourne</div></div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Happy Dogs</div></div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat"><div class="hero-stat-num">5&#9733;</div><div class="hero-stat-label">Google Rated</div></div>
+        <div class="hero-visual" aria-hidden="true">
+          <img class="hero-photo-main" src="images/spaniel.webp" alt="Happy spaniel" loading="eager"/>
+          <img class="hero-photo-accent" src="images/group-walk.webp" alt="Group dog walk" loading="eager"/>
+          <div class="hero-visual-badge">
+            <div class="hero-visual-badge-icon"><svg viewBox="0 0 28 28" fill="none"><ellipse cx="5.5" cy="10" rx="2.5" ry="3" transform="rotate(-20 5.5 10)" fill="currentColor"/><ellipse cx="10.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(-8 10.5 6.5)" fill="currentColor"/><ellipse cx="17.5" cy="6.5" rx="2.7" ry="3.3" transform="rotate(8 17.5 6.5)" fill="currentColor"/><ellipse cx="22.5" cy="10" rx="2.5" ry="3" transform="rotate(20 22.5 10)" fill="currentColor"/><ellipse cx="14" cy="19" rx="8.5" ry="9" fill="currentColor"/></svg></div>
+            <div><strong>500+ Happy Dogs</strong><span>Trusted since 2016</span></div>
+          </div>
         </div>
       </div>
     </div>
     <div class="hero-scroll"><svg viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scroll</div>
-    <div class="hero-floats" aria-hidden="true">
-      <div class="hero-float-a"><img src="images/spaniel.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 12%"/></div>
-      <div class="hero-float-b"><img src="images/group-walk.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 35%"/></div>
-    </div>
   </section>
   <div class="trust" aria-hidden="true">
     <div class="trust-track">
@@ -465,7 +470,7 @@
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
-    window.addEventListener('load', () => { document.getElementById('heroBg').classList.add('loaded'); });
+    window.addEventListener('load', () => {});
     function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
